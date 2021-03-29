@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<br />
+<br />
+<br />
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Post아이디</th>
+            <th>조회 수</th>
+            <th>좋아요 개수</th>
+            <th>작성자 아이디</th>
+            <th>제목</th>
+            <th>게시글 내용</th>
+            <th>주소</th>
+            <th>리뷰대상</th>
+            <th>리뷰종류</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${post}">
+            <td th:text="${post.id}" id="id_btn" th:onclick="'likeToDetail('+ ${post.id} + ')'"></td>
+            <td th:text="${post.findCnt}"></td>
+            <td th:text="${post.likeCnt}" id="likeCnt"></td>
+            <td th:text="${post.author}"></td>
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.content}"></td>
+            <td th:text="${post.roadAddr}"></td>
+            <td th:text="${post.transactionType}"></td>
+            <td th:text="${post.category}"></td>
+            <td><button id="createLike" th:value="${post.id}"
+                        style='background-color: rgb(255, 255, 255);'
+                        onclick="createLike()">좋아요</button></td>
+<!--            <td><button id="deleteLike" th:value="${post.id}" onclick="deleteLike()">좋아요 취소</button></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

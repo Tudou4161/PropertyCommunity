@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<br />
+<br />
+<br />
+<div class="container">
+    <form action="/login" method="post">
+        <!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+        <div class="form-group">
+            email : <input type="text" name="username" class="form-control"> <br>
+        </div>
+        <div class="form-group">
+            password : <input type="password" name="password" class="form-control"> <br>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div> <br />
+
+<div class="container">
+    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
+        <span th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></span>
+    </div> <br>
+
+    <a href="/signup" role="button" class="btn btn-primary"> Go to Join! -> </a>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+
+</body>
+</html>

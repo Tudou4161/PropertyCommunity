@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<br />
+<br />
+<br />
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>작성자 아이디</th>
+            <th>제목</th>
+            <th>게시글 내용</th>
+            <th>장소</th>
+            <th>리뷰종류</th>
+            <th>유형</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${myposts}">
+            <td th:text="${post.author}"></td>
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.content}"></td>
+            <td th:text="${post.transactionType}"></td>
+            <td th:text="${post.category}"></td>
+            <td><a href="#" th:href="@{/lists/{id}/edit (id=${post.id})}"
+                   class="btn btn-primary" role="button">수정</a></td>
+            <td><a href="#" th:href="@{/lists/{id}/delete (id=${post.id})}"
+                   class="btn btn-primary" role="button">삭제</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

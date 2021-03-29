@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/header :: header"/>
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<br />
+<br />
+<br />
+    <div class="container">
+        <div>
+            <div>
+                <a class="btn btn-lg btn-secondary" href="/lists/createPost">게시글 작성하기</a>
+            </div>
+            <div>
+                <a class="btn btn-lg btn-secondary" href="/lists/myPosts">내 게시글 수정-삭제하기</a>
+            </div>
+        </div>
+        <br >
+        <div>
+            <form th:object="${postSearchCondition}" class="form-inline">
+                <div class="form-group mb-2">
+                    <select th:field="*{firstAddr}" class="form-control">
+                        <option value="">광역시/특별시/도</option>
+                        <option value="서울">서울</option>
+                        <option value="경기">경기</option>
+                        <option value="인천">인천</option>
+                        <option value="광주">광주</option>
+                        <option value="대구">대구</option>
+                        <option value="부산">부산</option>
+                        <option value="대전">대전</option>
+                        <option value="강원">강원</option>
+                        <option value="경북">경북</option>
+                        <option value="경남">경남</option>
+                        <option value="충북">충북</option>
+                        <option value="충남">충남</option>
+                        <option value="전북">전북</option>
+                        <option value="전남">전남</option>
+                        <option value="제주">제주</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{secondAddr}" class="form-control" placeholder="시/군/구"/>
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="text" th:field="*{subAddress}" class="form-control" placeholder="건물/부동산 이름"/>
+                </div>
+
+
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{category}" class="form-control">
+                        <option value="">카테고리</option>
+                        <option th:each=
+                                        "status : ${T(com.service.PropertyService.domain.Category).values()}"
+                                th:value="${status}"
+                                th:text="${status}">option
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{transactionType}" class="form-control">
+                        <option value="">거래종류</option>
+                        <option th:each=
+                                        "status : ${T(com.service.PropertyService.domain.TransactionType).values()}"
+                                th:value="${status}"
+                                th:text="${status}">option
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+        <br />
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Post아이디</th>
+                    <th>좋아요 개수</th>
+                    <th>작성자 아이디</th>
+                    <th>제목</th>
+                    <th>게시글 내용</th>
+                    <th>주소</th>
+                    <th>상호명</th>
+                    <th>리뷰대상</th>
+                    <th>리뷰종류</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="post : ${posts}">
+                        <td th:text="${post.id}"></td>
+                        <td th:text="${post.likeCnt}"></td>
+                        <td th:text="${post.author}"></td>
+                        <td th:text="${post.title}"></td>
+                        <td th:text="${post.content}"></td>
+                        <td th:text="${post.roadAddr}"></td>
+                        <td th:text="${post.subAddress}"></td>
+                        <td th:text="${post.transactionType}"></td>
+                        <td th:text="${post.category}"></td>
+                        <td><a href="#" th:href="@{/lists/postId&={id}/details (id=${post.id})}"
+                        class="btn btn-primary" role="button">읽기</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
