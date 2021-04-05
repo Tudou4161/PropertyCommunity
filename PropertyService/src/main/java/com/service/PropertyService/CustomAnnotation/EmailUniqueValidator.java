@@ -8,10 +8,15 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.text.MessageFormat;
 
+
 public class EmailUniqueValidator implements ConstraintValidator<EmailUniqueException, String> {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public void initialize(EmailUniqueException constraintAnnotation) {
+    }
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {

@@ -7,6 +7,8 @@ import com.service.PropertyService.domain.Like;
 import com.service.PropertyService.domain.Post;
 import com.service.PropertyService.domain.User;
 import lombok.RequiredArgsConstructor;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Random;
 
 /*
  * post의 서브기능을 처리하는 컨트롤러
