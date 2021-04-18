@@ -5,18 +5,36 @@
 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
 <h1>Sign Up</h1> <hr>
 
-<form th:action="@{/user}" th:object="${form}" method="POST">
-    email : <input type="text" name="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'form-control fieldError' : 'form-control'"> <br>
+<form th:action="@{/user}" th:object="${form}" method="POST" onsubmit="return submitCheck();">
+    email : <input type="text" id="mail" name="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'form-control fieldError' : 'form-control'"> <br>
+            <button type="button" id="sendMail">
+                이메일 인증 보내기
+            </button>
+    <input type="hidden" id="authCode">
+    email auth: <input type="text" id="checkCode"> <br>
+                <button type="button" id="check-btn">
+                    인증번호 체크
+                </button>
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <br>
+    <br>
+    <input type="text" id="compare-text" placeholder="이메일인증을 진행해주세요!">
+
     password : <input type="password" name="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'"> <br>
+
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     name : <input type="name" name="name" th:field="*{name}" th:class="form-control"/>
+
     <input type="radio" name="auth" value="ROLE_ADMIN,ROLE_USER"> admin
+
     <input type="radio" name="auth" value="ROLE_USER" checked="checked"> user <br>
-    <button type="submit">회원가입 완료하기</button>
+
+    <input type="hidden" id="isCertificate" value="false" >
+    <button type="submit" class="submit-btn">회원가입 완료하기</button>
 </form> <br>
 
 <a href="/login">Go to login →</a>
 <div th:replace="fragments/footer :: footer"/>
+<script type="text/javascript" src="/js/email.js"></script>
 </body>
 </html>

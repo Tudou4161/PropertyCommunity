@@ -12,12 +12,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("main");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/admin").setViewName("admin");
-        //registry.addViewController("/signup").setViewName("signup");
+        registry.addViewController("/signup").setViewName("signup");
     }
-
-    //cors에러 방지
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**").allowedOrigins("http://localhost:8080");
-//    }
 }

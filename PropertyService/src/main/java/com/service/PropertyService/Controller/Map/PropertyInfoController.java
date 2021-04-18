@@ -1,4 +1,4 @@
-package com.service.PropertyService.Controller;
+package com.service.PropertyService.Controller.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.querydsl.core.Tuple;

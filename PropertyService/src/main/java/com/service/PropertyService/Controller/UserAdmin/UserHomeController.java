@@ -1,4 +1,4 @@
-package com.service.PropertyService.Controller;
+package com.service.PropertyService.Controller.UserAdmin;
 
 import com.service.PropertyService.Service.UserService;
 import com.service.PropertyService.dto.UserDto;

@@ -3,9 +3,6 @@ import com.service.PropertyService.Repository.UserRepository;
 import com.service.PropertyService.domain.User;
 import com.service.PropertyService.dto.UserDto;
 import lombok.RequiredArgsConstructor;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -68,6 +65,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public void deleteUser(Long userId) {
+
         userRepository.delete(userId);
     }
 

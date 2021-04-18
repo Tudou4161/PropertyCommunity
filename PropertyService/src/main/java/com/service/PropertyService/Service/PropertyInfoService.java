@@ -29,7 +29,9 @@ public class PropertyInfoService {
         return propertyInfoRepository.findAll();
     }
 
-    public PropertyInfo findByPost(Long postId) { return propertyInfoRepository.findByPostId(postId); }
+    public PropertyInfo findByPost(Long postId) {
+        return propertyInfoRepository.findByPostId(postId);
+    }
 
     public List<Tuple> findOneMarkerAggrCategory(Long postId) {
         return propertyInfoRepository.findByOneMarkerByAggrCategory(postId);

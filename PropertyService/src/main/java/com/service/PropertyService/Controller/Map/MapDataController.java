@@ -1,4 +1,5 @@
-package com.service.PropertyService.Controller;
+package com.service.PropertyService.Controller.Map;
+
 import com.querydsl.core.Tuple;
 import com.service.PropertyService.Service.PropertyInfoService;
 import com.service.PropertyService.domain.PropertyInfo;
@@ -10,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static com.service.PropertyService.domain.QPropertyInfo.*;
 import static com.service.PropertyService.domain.QPost.*;
 
@@ -33,6 +32,7 @@ public class MapDataController {
         return results;
     }
 
+
     //마커의 postId를 클릭하면 ajax로 받아온 id값을 활용해서, 집계함수를 호출한다.
     @GetMapping("/maps/map/detail/{postId}")
     @ResponseBody
@@ -42,6 +42,7 @@ public class MapDataController {
         JSONObject results = collectionToJsonConverter2(aggrCategory, aggrGrade);
         return results;
     }
+
 
     public JSONObject collectionToJsonConverter2(List<Tuple> aggrCategory, List<Double> aggrGrade) {
         JSONArray jsonArray = new JSONArray();
@@ -63,6 +64,7 @@ public class MapDataController {
         }
         return data;
     }
+
 
     //컨트롤러 내부 로직함수.1 -> 부동산 정보 데이터를 json포맷으로 변환
     public String collectionToJsonConverter(List<Tuple> propertyInfoList) {

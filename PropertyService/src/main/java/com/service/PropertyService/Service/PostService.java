@@ -30,10 +30,6 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public List<Post> findPosts() {
-        //return postRepository.searchByBuilder(condition);
-        return postRepository.findAll();
-    }
 
     public List<Post> findPostsBySearchCondition(PostSearchCondition condition) {
         return postRepository.findAllAndsearchByBuilder(condition);
@@ -41,10 +37,6 @@ public class PostService {
 
     public Post findPost(Long postId) {
         return postRepository.findById(postId);
-    }
-
-    public List<Post> findPostByEmail(String email) {
-        return postRepository.findByEmail(email);
     }
 
     @Transactional
@@ -69,7 +61,7 @@ public class PostService {
         User findUser = userRepository.findById(userId);
         Post findPost = postRepository.findById(postId);
 
-        validateDuplicateLike(findUser.getId(), findPost.getId());
+        //validateDuplicateLike(findUser.getId(), findPost.getId());
 
         Like createLike = Like.builder()
                 .user(findUser)
@@ -122,4 +114,7 @@ public class PostService {
         return likeCnt;
     }
 
+    public List<Post> findPostByEmail(String name) {
+        return postRepository.findByEmail(name);
+    }
 }

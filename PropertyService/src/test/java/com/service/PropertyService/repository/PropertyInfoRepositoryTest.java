@@ -1,25 +1,20 @@
 package com.service.PropertyService.repository;
 
 import com.querydsl.core.Tuple;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.service.PropertyService.Controller.MapDataController;
+import com.service.PropertyService.Controller.Map.MapDataController;
 import com.service.PropertyService.Repository.PropertyInfoRepository;
 import com.service.PropertyService.Service.PostService;
 import com.service.PropertyService.Service.PropertyInfoService;
 import com.service.PropertyService.Service.UserService;
-import com.service.PropertyService.domain.*;
-import com.service.PropertyService.dto.UserDto;
 import org.json.simple.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
+
 import static com.service.PropertyService.domain.QPost.*;
 import static com.service.PropertyService.domain.QPropertyInfo.*;
 import javax.transaction.Transactional;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional

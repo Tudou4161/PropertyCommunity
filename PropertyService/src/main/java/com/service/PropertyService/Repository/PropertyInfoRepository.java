@@ -32,6 +32,7 @@ public class PropertyInfoRepository {
     }
 
     public PropertyInfo findById(Long id) {
+
         return em.find(PropertyInfo.class, id);
     }
 

@@ -1,4 +1,4 @@
-package com.service.PropertyService.Controller;
+package com.service.PropertyService.Controller.Post;
 
 import com.service.PropertyService.Repository.PropertyInfoRepository;
 import com.service.PropertyService.Service.PostService;
@@ -70,9 +70,7 @@ public class PostController {
 
             ++i;
         }
-
         model.addAttribute("posts", postDtos);
-
         return "/lists/listinfo";
     }
 
@@ -140,6 +138,7 @@ public class PostController {
         model.addAttribute("post", postDto);
         return "/lists/postDetails";
     }
+
 
     @GetMapping(value = "/lists/{postId}/edit")
     public String updatePostForm(@PathVariable("postId") Long postId, Model model) {

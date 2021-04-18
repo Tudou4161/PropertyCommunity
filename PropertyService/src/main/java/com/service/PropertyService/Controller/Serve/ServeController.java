@@ -1,4 +1,4 @@
-package com.service.PropertyService.Controller;
+package com.service.PropertyService.Controller.Serve;
 
 import com.service.PropertyService.Repository.LikeRepository;
 import com.service.PropertyService.Service.PostService;
@@ -7,8 +7,6 @@ import com.service.PropertyService.domain.Like;
 import com.service.PropertyService.domain.Post;
 import com.service.PropertyService.domain.User;
 import lombok.RequiredArgsConstructor;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Controller;
@@ -22,7 +20,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Random;
 
-/*
+/**
  * post의 서브기능을 처리하는 컨트롤러
  * @author: 지영석
  * @Object: 좋아요 로직 생성
@@ -52,6 +50,7 @@ public class ServeController {
             return jsonObject;
         }
     }
+
 
     @ResponseBody
     @GetMapping("/like/{postId}")

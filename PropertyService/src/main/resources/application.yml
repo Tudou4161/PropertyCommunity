@@ -1,14 +1,25 @@
 server:
   address: localhost
-  port: 8080
+  port: 8000
 
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: cef5787@gmail.com
+    password: ffcckmarkidsucxg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   datasource:
     url: jdbc:mysql://localhost:3306/propertyservice?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: Nodo7102@
     driver-class-name: com.mysql.cj.jdbc.Driver
-
 
   jpa:
     database: mysql

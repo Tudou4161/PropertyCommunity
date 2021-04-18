@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Configuration
@@ -26,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login", "/signup", "/user").permitAll()
+                    .antMatchers("/login", "/signup", "/user", "/email/checkEmail/{emailAddr}").permitAll()
                     .antMatchers("/").hasRole("USER")
                     .antMatchers("/admin").hasRole("ADMIN")
                     .anyRequest().authenticated()
