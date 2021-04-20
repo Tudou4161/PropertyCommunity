@@ -33,6 +33,7 @@ public class FindUserAuthController {
         return "findID";
     }
 
+
     @ResponseBody
     @GetMapping("/findUser/findEmail/{name}/{phoneNum}")
     public JSONObject findUserEmail(@PathVariable String name,

@@ -2,47 +2,63 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/header :: header"/>
 <body>
-<div th:replace="fragments/bodyHeader :: bodyHeader"/>
-<h1>Sign Up</h1> <hr>
+<div class="container w-50">
+    <div class="text-white text-center">
+        <h2>회원가입</h2>
+    </div>
+    <form th:action="@{/user}" th:object="${form}"
+          method="POST" onsubmit="return submitCheck();">
 
-<form th:action="@{/user}" th:object="${form}" method="POST" onsubmit="return submitCheck();">
-    email : <input type="text" id="mail" name="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'form-control fieldError' : 'form-control'"> <br>
-            <button type="button" id="sendMail">
-                이메일 인증 보내기
-            </button>
-    <input type="hidden" id="authCode">
-    email auth: <input type="text" id="checkCode"> <br>
-                <button type="button" id="check-btn">
-                    인증번호 체크
-                </button>
-    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-    <br>
-    <br>
-    <input type="text" id="compare-text" placeholder="이메일인증을 진행해주세요!">
+        <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label text-white">이메일(아이디)</label>
+            <input type="text" id="mail" name="email" th:field="*{email}"
+                   th:class="${#fields.hasErrors('email')} ? 'form-control fieldError' : 'form-control'">
+            <br>
+            <button type="button" id="sendMail" class="btn btn-warning mb-3">인증번호 발송</button>
+            <input type="hidden" id="compare-text" placeholder="이메일인증을 진행해주세요!">
+        </div>
 
-    password : <input type="password" name="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'">
-    <br>
-    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        <input type="hidden" id="authCode">
 
-    name : <input type="text" name="name" th:field="*{name}" th:class="${#fields.hasErrors('name')} ? 'form-control fieldError' : 'form-control'">
-    <br>
-    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        <div class="mb-2 input-box row justify-content-start">
+            <div class="col-4">
+                <!-- <label for="inputPassword2" class="visually-hidden">인증</label> -->
+                <input type="text" class="form-control w-100" id="checkCode" placeholder="인증번호를 입력하세요.">
+            </div>
+            <div class="col-4">
+                <button type="button" id="check-btn"
+                        class="btn btn-warning mb-3">이메일 인증</button>
+            </div>
+            <p class="text-white" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
 
-    phoneNumber : <input type="text" name="phoneNumber" th:field="*{phoneNumber}"
-                         th:class="${#fields.hasErrors('phoneNumber')} ? 'form-control fieldError' : 'form-control'">
-    <br>
-    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+        <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label text-white">비밀번호</label>
+            <input type="password" name="password" th:fields="*{password}" th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'"
+                   id="exampleFormControlInput1" placeholder="비밀번호를 입력하세요.">
+            <p class="text-white" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        </div>
 
-    <input type="radio" name="auth" value="ROLE_ADMIN,ROLE_USER"> admin
+<!--        <div class="mb-2">-->
+<!--            <label for="exampleFormControlInput1" class="form-label text-white">비밀번호 확인</label>-->
+<!--            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="비밀번호를 입력하세요.">-->
+<!--        </div>-->
 
-    <input type="radio" name="auth" value="ROLE_USER" checked="checked"> user <br>
+        <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label text-white">전화번호</label>
+            <input type="text" name="phoneNumber" th:field="*{phoneNumber}"
+                   id="exampleFormControlInput1" th:class="${#fields.hasErrors('phoneNumber')} ? 'form-control fieldError' : 'form-control'" placeholder="생년월일을 입력하세요.">
+            <p class="text-white" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+        </div>
 
-    <input type="hidden" id="isCertificate" value="false" >
-    <button type="submit" class="submit-btn">회원가입 완료하기</button>
-</form> <br>
+        <input type="hidden" name="auth" value="ROLE_USER" checked="checked"> user <br>
 
-<a href="/login">Go to login →</a>
-<div th:replace="fragments/footer :: footer"/>
+        <input type="hidden" id="isCertificate" value="false" >
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="submit" class="submit-btn btn btn-warning w-75">회원가입 하기</button>
+        </div>
+    </form>
+</div>
 <script type="text/javascript" src="/js/email.js"></script>
 </body>
 </html>

@@ -1,11 +1,21 @@
 body {
-    background-image: url("/template/img/background.png");
+    background-image: url("/img/background.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+
+  /* 생략 */
+}
+
 #head {
-     background-image: url("img/navbarback.png");
+     background-image: url("/img/navbarback.png");
      background-color: black;
      background-repeat: no-repeat;
      background-size: cover;
@@ -18,6 +28,7 @@ body {
     font-weight: bold;
     color: white;
 }
+
 #nav-bar {
     display: inline-block;
     height: 60%;
@@ -25,15 +36,18 @@ body {
     margin-top: 8px;
     width:100%;
 }
+
 #logo {
     color:white;
     float: left;
     margin: 0 0 0 60px;
 }
+
 li {
     list-style: none;
     display: inline;
 }
+
 #menu {
     font-weight: bold;
     font-size: larger;
