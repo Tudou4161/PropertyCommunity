@@ -40,24 +40,28 @@ public class InitDb {
                     .password("asd123456")
                     .auth("ROLE_USER")
                     .name("www")
+                    .phoneNumber("01041614096")
                     .build();
 
             UserDto user2 = UserDto.builder()
                     .email("xcvef5787@naver.com")
                     .password("asd123456")
                     .auth("ROLE_USER")
+                    .phoneNumber("01041614096")
                     .build();
 
             UserDto user3 = UserDto.builder()
                     .email("xcvef6687@naver.com")
                     .password("asd123456")
                     .auth("ROLE_USER")
+                    .phoneNumber("0101221122")
                     .build();
 
             UserDto user4 = UserDto.builder()
                     .email("xxcvjxo87@naver.com")
                     .password("asd123456")
                     .auth("ROLE_USER")
+                    .phoneNumber("11111111111")
                     .build();
 
             userService.join(user);

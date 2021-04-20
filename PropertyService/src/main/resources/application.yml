@@ -1,6 +1,6 @@
 server:
   address: localhost
-  port: 8000
+  port: 8080
 
 spring:
   mail:

@@ -40,7 +40,7 @@ public class ServeController {
                                   Principal principal) {
 
         JSONObject jsonObject = new JSONObject();
-        User user = userService.findOneByUserEmail(principal.getName());
+        User user = userService.findByUserEmail(principal.getName());
 
         if (likeRepository.findByUserIdAndPostId(user.getId(), postId) != null) {
             jsonObject.put("Message", "already clicked");
@@ -57,7 +57,7 @@ public class ServeController {
     public JSONObject setUpLike(@PathVariable Long postId,
                             Principal principal) {
 
-        User user = userService.findOneByUserEmail(principal.getName());
+        User user = userService.findByUserEmail(principal.getName());
         postService.createLike(user.getId(), postId);
 
         JSONObject jsonObject = new JSONObject();
@@ -79,7 +79,7 @@ public class ServeController {
     public JSONObject deleteLike(@PathVariable Long postId,
                              Principal principal) {
 
-        User user = userService.findOneByUserEmail(principal.getName());
+        User user = userService.findByUserEmail(principal.getName());
         postService.deleteLike(user.getId(), postId);
 
         JSONObject jsonObject = new JSONObject();

@@ -27,7 +27,11 @@ public class UserRepository {
     }
 
     public void save(User user) {
-        em.persist(user);
+        if (user.getId() != null) {
+            em.merge(user);
+        } else {
+            em.persist(user);
+        }
     }
 
     public User findById(Long id) {
@@ -52,21 +56,28 @@ public class UserRepository {
         return optionalUser;
     }
 
-    public List<User> findByUsername(String name) {
+    public User findByUserEmail(String email) {
+        return queryFactory
+                .selectFrom(user)
+                .where(user.email.eq(email))
+                .fetchOne();
+    }
+
+    public User findByUsername(String name) {
         return queryFactory
                 .select(user)
                 .from(user)
                 .where(user.name.eq(name))
-                .fetch();
-    }
-
-    public User findByUserEmail(String userEmail) {
-        return queryFactory
-                .selectFrom(user)
-                .where(user.email.eq(userEmail))
                 .fetchOne();
     }
 
+    public User findByUsernameAndPhoneNumber(String username, String phoneNumber) {
+        return queryFactory
+                .selectFrom(user)
+                .where(user.name.eq(username)
+                        .and(user.phoneNumber.eq(phoneNumber)))
+                .fetchOne();
+    }
 
     public void delete(Long id) {
         User user = em.find(User.class, id);

@@ -1,0 +1,99 @@
+body {
+    background-image: url("/template/img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#head {
+     background-image: url("img/navbarback.png");
+     background-color: black;
+     background-repeat: no-repeat;
+     background-size: cover;
+     height: 150px;
+        }
+
+#logout {
+    float: right;
+    margin: 10px 20px 0 0;
+    font-weight: bold;
+    color: white;
+}
+#nav-bar {
+    display: inline-block;
+    height: 60%;
+    border: solid 1px white;
+    margin-top: 8px;
+    width:100%;
+}
+#logo {
+    color:white;
+    float: left;
+    margin: 0 0 0 60px;
+}
+li {
+    list-style: none;
+    display: inline;
+}
+#menu {
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    padding-top: 20px;
+    float: right;
+    display: inline;
+    color: white;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+.item {
+    padding: 0 10px 0 10px;
+}
+#search-bar {
+    margin-top: 10px;
+    width: auto;
+    margin-left: 40px;
+    float: left;
+
+}
+#direct-search {
+    width: 350px;
+    height: 20px;
+}
+#srh-search {
+    height: 20px;
+}
+#search-btn {
+    color: white;
+    background-color: rgb(240, 207, 145);
+    padding:0 15px 0 15px;
+
+}
+#write-btn {
+    display: inline;
+    float: right;
+    margin-right: 100px;
+}
+#write-btn-btn{
+    width: 185%;
+    padding: 6px;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: orange;
+    font-size: 15px;
+}
+table {
+    clear: both;
+    width:100%;
+    table-layout:fixed;
+    text-align: center;
+}
+#table1 {
+    margin-top: 90px;
+}
+p {
+    font-size: 12px;
+}
+td {
+    border-bottom: 1px dashed gray;
+}

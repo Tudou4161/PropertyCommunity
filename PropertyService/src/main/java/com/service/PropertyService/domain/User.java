@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User implements UserDetails {
 
@@ -25,11 +25,9 @@ public class User implements UserDetails {
 
     private String name;
 
-    private String auth;
+    private String phoneNumber;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(nullable = false)
-//    private UserRole role;
+    private String auth;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Like> like = new HashSet<>();
@@ -37,11 +35,12 @@ public class User implements UserDetails {
 
     @Builder
     public User(String email, String password, String name,
-                String auth) {
+                String auth, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.auth = auth;
         this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -68,6 +67,9 @@ public class User implements UserDetails {
         return email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

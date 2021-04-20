@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+
 @Data
 @NoArgsConstructor
 public class UserDto {
@@ -24,15 +25,20 @@ public class UserDto {
 
     private String auth;
 
+    @NotBlank(message = "본명을 입력해주세요.")
     private String name;
+
+    @NotBlank(message = "전화번호를 입력해주세요.")
+    private String phoneNumber;
 
     @Builder
     public UserDto(String email, String password, String name,
-                   String auth) {
+                   String auth, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.auth = auth;
         this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
     public void setPassword(String password) {

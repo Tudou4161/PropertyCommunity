@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 @Service
@@ -34,33 +35,33 @@ public class UserService implements UserDetailsService {
 
         userDto.setPassword(encoder.encode(userDto.getPassword()));
 
-//        validateDuplicateUser(userDto);
-
         userRepository.save(User.builder()
                 .email(userDto.getEmail())
                 .auth(userDto.getAuth())
                 .password(userDto.getPassword())
+                .phoneNumber(userDto.getPhoneNumber())
+                .name(userDto.getName())
                 .build());
     }
 
-//    private void validateDuplicateUser(UserDto userDto) {
-//        User findMembers = userRepository.findByUserEmail(userDto.getEmail());
-//        if (findMembers != null) {
-//            throw new IllegalStateException("이미 존재하는 회원입니다!");
-//        }
-//    }
-
-
     public List<User> findMembers() {
         return userRepository.findAll();
+    }
+
+    public User findByUsername(String name) {
+        return userRepository.findByUsername(name);
+    }
+
+    public User findByUserEmail(String email) {
+        return userRepository.findByUserEmail(email);
     }
 
     public User findOne(Long userId) {
         return userRepository.findById(userId);
     }
 
-    public User findOneByUserEmail(String userEmail) {
-        return userRepository.findByUserEmail(userEmail);
+    public User findOneByUsernameAndPhoneNumber(String userEmail, String phoneNumber) {
+        return userRepository.findByUsernameAndPhoneNumber(userEmail, phoneNumber);
     }
 
     @Transactional
@@ -69,4 +70,18 @@ public class UserService implements UserDetailsService {
         userRepository.delete(userId);
     }
 
+    public String getAuthCode() {
+        Random random = new Random();  //난수 생성을 위한 랜덤 클래스
+        String key="";  //인증번호
+
+        //입력 키를 위한 코드
+        for(int i =0; i<3;i++) {
+            int index=random.nextInt(25)+65; //A~Z까지 랜덤 알파벳 생성
+            key+=(char)index;
+        }
+        int numIndex=random.nextInt(9999)+1000; //4자리 랜덤 정수를 생성
+        key+=numIndex;
+
+        return key;
+    };
 }

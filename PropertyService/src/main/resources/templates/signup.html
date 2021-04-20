@@ -20,10 +20,18 @@
     <br>
     <input type="text" id="compare-text" placeholder="이메일인증을 진행해주세요!">
 
-    password : <input type="password" name="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'"> <br>
-
+    password : <input type="password" name="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'form-control fieldError' : 'form-control'">
+    <br>
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-    name : <input type="name" name="name" th:field="*{name}" th:class="form-control"/>
+
+    name : <input type="text" name="name" th:field="*{name}" th:class="${#fields.hasErrors('name')} ? 'form-control fieldError' : 'form-control'">
+    <br>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+    phoneNumber : <input type="text" name="phoneNumber" th:field="*{phoneNumber}"
+                         th:class="${#fields.hasErrors('phoneNumber')} ? 'form-control fieldError' : 'form-control'">
+    <br>
+    <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
 
     <input type="radio" name="auth" value="ROLE_ADMIN,ROLE_USER"> admin
 
