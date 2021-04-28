@@ -66,6 +66,7 @@ public class PostController {
             postDto.setRoadAddr(post.getAddress().getRoadAddr());
             postDto.setSubAddress(post.getAddress().getSubAddress());
             postDto.setCategory(post.getCategory());
+            postDto.setGrade(post.getGrade());
             postDtos.add(postDto);
 
             ++i;

@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 var sendEmail = function (){
 
-    $("#sendMail").unbind('click');
+    //$("#sendMail").unbind('click');
 
     var emailAddr = document.getElementById('mail').value;
 
@@ -14,6 +14,7 @@ var sendEmail = function (){
         alert("이메일 인증을 진행해주세요.");
     } else {
         var emailAddr = document.getElementById('mail').value;
+        console.log(emailAddr);
 
         $.ajax({
             type: "GET",
@@ -24,7 +25,7 @@ var sendEmail = function (){
                 console.log(data.result);
                 console.log(data.email);
                 console.log(data.content);
-                var code = $('#authCode').val(data.content);
+                //var code = $('#authCode').val(data.content);
                 console.log(code);
 
             }).fail(function(request,status,error){

@@ -39,6 +39,8 @@ public class FindUserAuthController {
     public JSONObject findUserEmail(@PathVariable String name,
                                     @PathVariable String phoneNum) {
 
+        JSONObject obj = new JSONObject();
+
         User user = userService.findOneByUsernameAndPhoneNumber(name, phoneNum);
 
         char[] charArr = user.getEmail().toCharArray();
@@ -49,8 +51,7 @@ public class FindUserAuthController {
 
         String email = String.valueOf(charArr);
 
-        JSONObject obj = new JSONObject();
-        obj.put("data", email);
+        obj.put("message", email);
 
         return obj;
     }

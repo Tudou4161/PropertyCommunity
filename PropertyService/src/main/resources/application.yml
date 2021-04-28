@@ -3,18 +3,6 @@ server:
   port: 8000
 
 spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: cef5787@gmail.com
-    password: ffcckmarkidsucxg
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
   datasource:
     url: jdbc:mysql://localhost:3306/propertyservice?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root

@@ -66,7 +66,6 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public void deleteUser(Long userId) {
-
         userRepository.delete(userId);
     }
 
@@ -83,5 +82,5 @@ public class UserService implements UserDetailsService {
         key+=numIndex;
 
         return key;
-    };
+    }
 }

@@ -7,104 +7,106 @@
 
 <body>
 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <div>
-        <form th:object="${postSearchCondition}" class="form-inline">
-            <div class="form-group mb-2">
-                <select th:field="*{firstAddr}" class="form-control">
-                    <option value="">광역시/특별시/도</option>
-                    <option value="서울">서울</option>
-                    <option value="경기">경기</option>
-                    <option value="인천">인천</option>
-                    <option value="광주">광주</option>
-                    <option value="대구">대구</option>
-                    <option value="부산">부산</option>
-                    <option value="대전">대전</option>
-                    <option value="강원">강원</option>
-                    <option value="경북">경북</option>
-                    <option value="경남">경남</option>
-                    <option value="충북">충북</option>
-                    <option value="충남">충남</option>
-                    <option value="전북">전북</option>
-                    <option value="전남">전남</option>
-                    <option value="제주">제주</option>
-                </select>
-            </div>
+<div style="background-color: white">
+    <form class="row gx-3 gy-2 align-items-center" style="margin-top:150px" th:object="${postSearchCondition}">
+        <div class="col-sm-3">
+            <label class="visually-hidden" for="specificSizeInputName">시/군/구 검색</label>
+            <input type="text" th:field="*{secondAddr}" class="form-control" id="specificSizeInputName" placeholder="시/군/구 검색">
+        </div>
 
-            <div class="form-group mb-2">
-                <input type="text" th:field="*{secondAddr}" class="form-control" placeholder="시/군/구"/>
-            </div>
+        <div class="col-sm-3">
+            <label class="visually-hidden" for="specificSizeInputName">건물명 검색</label>
+            <input type="text" th:field="*{subAddress}" class="form-control" id="specificSizeInputName" placeholder="상호명 검색">
+        </div>
 
-            <div class="form-group mb-2">
-                <input type="text" th:field="*{subAddress}" class="form-control" placeholder="건물/부동산 이름"/>
-            </div>
+        <div class="col-sm-3">
+            <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+            <select th:field="*{firstAddr}" class="form-select" id="specificSizeSelect">
+                <option value="">광역시/특별시/도</option>
+                <option value="서울">서울</option>
+                <option value="경기">경기</option>
+                <option value="인천">인천</option>
+                <option value="광주">광주</option>
+                <option value="대구">대구</option>
+                <option value="부산">부산</option>
+                <option value="대전">대전</option>
+                <option value="강원">강원</option>
+                <option value="경북">경북</option>
+                <option value="경남">경남</option>
+                <option value="충북">충북</option>
+                <option value="충남">충남</option>
+                <option value="전북">전북</option>
+                <option value="전남">전남</option>
+                <option value="제주">제주</option>
+            </select>
+        </div>
+
+        <div class="col-sm-3">
+            <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+            <select th:field="*{category}" class="form-select" id="specificSizeSelect">
+                <option value="">카테고리</option>
+                <option th:each=
+                                "status : ${T(com.service.PropertyService.domain.Category).values()}"
+                        th:value="${status}"
+                        th:text="${status}">option
+                </option>
+            </select>
+        </div>
+
+        <div class="col-sm-3">
+            <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+            <select th:field="*{transactionType}" class="form-select" id="specificSizeSelect">
+                <option value="">거래종류</option>
+                <option th:each=
+                                "status : ${T(com.service.PropertyService.domain.TransactionType).values()}"
+                        th:value="${status}"
+                        th:text="${status}">option
+                </option>
+            </select>
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">검색</button>
+        </div>
+    </form>
 
 
-            <div class="form-group mx-sm-1 mb-2">
-                <select th:field="*{category}" class="form-control">
-                    <option value="">카테고리</option>
-                    <option th:each=
-                                    "status : ${T(com.service.PropertyService.domain.Category).values()}"
-                            th:value="${status}"
-                            th:text="${status}">option
-                    </option>
-                </select>
-            </div>
-            <div class="form-group mx-sm-1 mb-2">
-                <select th:field="*{transactionType}" class="form-control">
-                    <option value="">거래종류</option>
-                    <option th:each=
-                                    "status : ${T(com.service.PropertyService.domain.TransactionType).values()}"
-                            th:value="${status}"
-                            th:text="${status}">option
-                    </option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">검색</button>
-        </form>
-    </div>
     <div id="write-btn">
         <a href="/lists/createPost" type="button" id="write-btn-btn" >
             <img src="/img/write.png" width="20" id="img-write">
             글쓰기
         </a>
-        <a href="/lists/myPosts" type="button" id="write-btn-btn" >
-            <img src="/img/write.png" width="20" id="img-write">
-            내 게시글
-        </a>
+        <!--    <a href="/lists/myPosts" type="button" id="write-btn-btn" >-->
+        <!--        <img src="/img/write.png" width="20" id="img-write">-->
+        <!--        내 게시글-->
+        <!--    </a>-->
     </div>
     <div>
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Post아이디</th>
-                <th>좋아요 개수</th>
-                <th>작성자 아이디</th>
-                <th>제목</th>
-                <th>게시글 내용</th>
-                <th>주소</th>
-                <th>상호명</th>
-                <th>리뷰대상</th>
-                <th>리뷰종류</th>
-                <th></th>
+                <th>유저</th> <th>제목</th> <th>지역</th> <th>상호명</th> <th>리뷰대상</th>
+                <th>리뷰종류</th> <th>추천</th> <th>평점</th>
             </tr>
             </thead>
             <tbody>
-                <tr th:each="post : ${posts}">
-                    <td th:text="${post.id}"></td>
-                    <td th:text="${post.likeCnt}"></td>
-                    <td th:text="${post.author}"></td>
-                    <td th:text="${post.title}"></td>
-                    <td th:text="${post.content}"></td>
-                    <td th:text="${post.roadAddr}"></td>
-                    <td th:text="${post.subAddress}"></td>
-                    <td th:text="${post.transactionType}"></td>
-                    <td th:text="${post.category}"></td>
-                    <td><a href="#" th:href="@{/lists/postId&={id}/details (id=${post.id})}"
-                    class="btn btn-primary" role="button">읽기</a></td>
-                </tr>
+            <tr th:each="post : ${posts}">
+<!--                <td th:text="${post.id}"></td>-->
+                <td th:text="${post.author}"></td>
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.roadAddr}"></td>
+                <td th:text="${post.subAddress}"></td>
+                <td th:text="${post.transactionType}"></td>
+                <td th:text="${post.category}"></td>
+                <td th:text="${post.likeCnt}"><img src=img/good.jpg width="40"></td>
+                <td th:text="${post.grade}"></td>
+                <td><a href="#" th:href="@{/lists/postId&={id}/details (id=${post.id})}"
+                       class="btn btn-primary" role="button">읽기</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
+</div>
 <div th:replace="fragments/footer :: footer"/>
 </body>
 </html>

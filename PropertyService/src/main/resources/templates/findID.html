@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<style>
+body {
+    background-image: url("/img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.box1 {
+    float: center;
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: black;
+    background-color: ivory;
+    padding: 20px 20px 20px 20px;
+}
+#phonenumb {
+    width: 400px;
+    text-align: center;
+}
+#name1 {
+    text-align: center;
+}
+</style>
+<body>
+<div class="box1">
+    <div>
+        <h3>아이디 찾기</h3>
+    </div>
+    <div>
+        아이디를 찾기 위해 이름을 입력해주세요
+    </div>
+    <div>
+        <form>
+            <div>
+                <input type="text" name="name1" id="name1" placeholder="이름을 입력해주세요">
+            </div>
+            <div>
+                아이디를 찾기 위해 휴대폰번호를 입력해주세요
+            </div>
+            <div>
+                <input type="text" name="phonenumber" id="phonenumb" placeholder="휴대폰 번호를 입력해주세요">
+            </div>
+            <div>
+                <button type="button" id="findIDbutton">확인</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/js/findAuth.js"></script>
+</body>
+</html>

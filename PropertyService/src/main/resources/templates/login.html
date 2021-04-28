@@ -6,7 +6,7 @@
     <div class="text-white">
         <h2>부동산 서비스</h2>
     </div>
-    <form action="/login" method="POST">
+    <form th:action="@{/login}" method="POST">
         <div class="input-group input-group-lg w-50">
             <span class="input-group-text" id="inputGroup-sizing-lg">
                 <img src="/img/person.png" height="30px" width="30px">
@@ -15,7 +15,7 @@
                    aria-describedby="inputGroup-sizing-lg" placeholder="아이디 입력">
         </div>
         <div class="input-group input-group-lg w-50">
-            <span class="input-group-text" id="inputGroup-sizing-lg">
+            <span class="input-group-text">
                 <img src="/img/lock.png" height="30px" width="30px">
             </span>
             <input type="password" class="form-control" name="password" aria-label="Sizing example input"
@@ -32,13 +32,13 @@
     <br>
     <div class="row align-items-center w-50">
         <div class="col">
-            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="/findID"
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" th:href="@{/findUser/findEmail}"
                role="button" aria-controls="offcanvasExample">
                 아이디찾기
             </a>
         </div>
         <div class="col">
-            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="/findPW"
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" th:href="@{/findUser/findpw}"
                role="button" aria-controls="offcanvasExample">
                 비밀번호찾기
             </a>
